@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Bài Viết</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+        }
+        .preview {
+            margin-top: 20px;
+        }
+        .preview img {
+            max-width: 100%;
+            max-height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Đăng Bài Viết</h1>
+    <form id="postForm">
+        <div class="form-group">
+            <label for="title">Tiêu đề bài viết:</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+        <div class="form-group">
+            <label for="content">Nội dung bài viết:</label>
+            <textarea id="content" name="content" rows="5" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="image">Chọn hình ảnh:</label>
+            <input type="file" id="image" name="image" accept="image/*" required>
+        </div>
+        <button type="button" onclick="submitPost()">Đăng bài viết</button>
+    </form>
+
+    <div class="preview" id="preview">
+        <h2>Xem trước bài viết:</h2>
+        <h3 id="previewTitle"></h3>
+        <p id="previewContent"></p>
+        <img id="previewImage" alt="Xem trước hình ảnh">
+    </div>
+
+    <script>
+        function submitPost() {
+            // Lấy dữ liệu từ form
+            const title = document.getElementById('title').value;
+            const content = document.getElementById('content').value;
+            const imageInput = document.getElementById('image');
+            const preview = document.getElementById('preview');
+
+            // Kiểm tra file ảnh
+            if (imageInput.files.length === 0) {
+                alert("Vui lòng chọn một hình ảnh.");
+                return;
+            }
+
+            const imageFile = imageInput.files[0];
+            const reader = new FileReader();
+
+            // Hiển thị xem trước sau khi đọc xong file
+            reader.onload = function (e) {
+                document.getElementById('previewTitle').innerText = title;
+                document.getElementById('previewContent').innerText = content;
+                document.getElementById('previewImage').src = e.target.result;
+
+                preview.style.display = "block";
+            };
+
+            reader.readAsDataURL(imageFile);
+        }
+    </script>
+</body>
+</html>

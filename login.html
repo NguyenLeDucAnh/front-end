@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký / Đăng Nhập</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .link {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .tabs {
+            display: flex;
+            justify-content: space-evenly;
+            margin-bottom: 20px;
+        }
+        .tab-button {
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            width: 45%;
+            text-align: center;
+        }
+        .tab-button.active {
+            background-color: #4CAF50;
+            color: white;
+            border-color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Đăng Ký / Đăng Nhập</h2>
+        <div class="tabs">
+            <button class="tab-button active" onclick="toggleTab('login')">Đăng Nhập</button>
+            <button class="tab-button" onclick="toggleTab('register')">Đăng Ký</button>
+        </div>
+
+        <!-- Đăng Nhập -->
+        <div id="login" class="tab-content">
+            <form action="admin.html" method="GET">
+                <label for="login-username">Tên người dùng:</label>
+                <input type="text" id="login-username" name="username" required>
+
+                <label for="login-password">Mật khẩu:</label>
+                <input type="password" id="login-password" name="password" required>
+
+                <input type="submit" value="Đăng Nhập" class="btn">
+            </form>
+            <p class="link">Chưa có tài khoản? <a href="javascript:void(0)" onclick="toggleTab('register')">Đăng Ký</a></p>
+        </div>
+
+        <!-- Đăng Ký -->
+        <div id="register" class="tab-content" style="display: none;">
+            <form action="admin.html" method="GET">
+                <label for="register-username">Tên người dùng:</label>
+                <input type="text" id="register-username" name="username" required>
+
+                <label for="register-email">Email:</label>
+                <input type="email" id="register-email" name="email" required>
+
+                <label for="register-phone">Số điện thoại:</label>
+                <input type="text" id="register-phone" name="phone" required>
+
+                <label for="register-password">Mật khẩu:</label>
+                <input type="password" id="register-password" name="password" required>
+
+                <label for="register-confirm-password">Xác nhận mật khẩu:</label>
+                <input type="password" id="register-confirm-password" name="confirm-password" required>
+
+                <input type="submit" value="Đăng Ký" class="btn">
+            </form>
+            <p class="link">Đã có tài khoản? <a href="javascript:void(0)" onclick="toggleTab('login')">Đăng Nhập</a></p>
+        </div>
+    </div>
+
+    <script>
+        function toggleTab(tab) {
+            // Ẩn tất cả các tab
+            document.querySelectorAll('.tab-content').forEach(function(content) {
+                content.style.display = 'none';
+            });
+            // Hiển thị tab đã chọn
+            document.getElementById(tab).style.display = 'block';
+
+            // Thay đổi trạng thái của các nút tab
+            document.querySelectorAll('.tab-button').forEach(function(button) {
+                button.classList.remove('active');
+            });
+            document.querySelector('.tab-button.' + tab).classList.add('active');
+        }
+    </script>
+</body>
+</html>

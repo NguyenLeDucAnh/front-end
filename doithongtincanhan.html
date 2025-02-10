@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chỉnh Sửa Thông Tin</title>
+
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+}
+
+.profile-container {
+  width: 100%;
+  max-width: 400px;
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+  display: block;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: #f9f9f9;
+}
+
+input[type="file"] {
+  padding: 8px 0;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.cancel-btn,
+.save-btn {
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.cancel-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+}
+
+.cancel-btn:hover {
+  background-color: #e53935;
+}
+
+.save-btn {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.save-btn:hover {
+  background-color: #45a049;
+}
+
+.image-preview {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.preview-image {
+  max-width: 80px;
+  max-height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 10px;
+}
+
+  </style>
+</head>
+<body>
+  <div class="profile-container">
+    <h2>Chỉnh Sửa Thông Tin Cá Nhân</h2>
+    <form action="#" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="name">Tên</label>
+        <input type="text" id="name" name="name" placeholder="Nhập tên của bạn" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Nhập email của bạn" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Mật khẩu</label>
+        <input type="password" id="password" name="password" placeholder="Nhập mật khẩu mới" required>
+      </div>
+      <div class="form-group">
+        <label for="profile-image">Ảnh đại diện</label>
+        <input type="file" id="profile-image" name="profile-image" accept="image/*">
+        <div id="image-preview" class="image-preview"></div>
+      </div>
+      <div class="button-group">
+        <a href="chinh.html" class="cancel-btn">Hủy</a>
+        <button type="button" class="save-btn" onclick="validatePassword()">Lưu thay đổi</button>
+      </div>
+      
+    </form>
+  </div>
+<script>
+  
+  function validatePassword() {
+    // Lấy mật khẩu từ input
+    const passwordInput = document.getElementById('password').value;
+    
+    // Mật khẩu đúng (thay bằng giá trị bạn muốn)
+    const correctPassword = "123456"; 
+
+    // Kiểm tra mật khẩu
+    if (passwordInput === correctPassword) {
+      // Nếu đúng, chuyển hướng đến trang "doi.html"
+      window.location.href = "chinh..html";
+    } else {
+      // Nếu sai, hiển thị cảnh báo
+      alert("Mật khẩu không đúng. Vui lòng thử lại!");
+    }
+  }
+</script>
+
+
+</body>
+</html>
